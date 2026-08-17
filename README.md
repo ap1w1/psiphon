@@ -5,7 +5,7 @@ Run Psiphon as a local, TCP-only SOCKS proxy for Xray/Remnawave on Debian or Ubu
 ## Installation
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/vps-psiphon/main/psiphon_install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/psiphon/main/psiphon_install.sh)
 ```
 
 Choose a region or custom ports in the same command:
