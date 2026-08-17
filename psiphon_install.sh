@@ -27,7 +27,7 @@ for command in docker systemctl curl ss nft; do
   command -v "$command" >/dev/null || die "$command is required"
 done
 
-IMAGE=swarupsengupta2007/psiphon:latest
+IMAGE=ghcr.io/charafreedom/psiphon:latest
 SOCKS_PORT=1080
 HTTP_PORT=8080
 DEVICE_REGION=
