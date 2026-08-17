@@ -195,10 +195,38 @@ systemctl restart vps-psiphon-firewall.service
 nft list table inet psiphon_guard >/dev/null || die "firewall verification failed; refusing to start Psiphon"
 systemctl restart vps-psiphon.service
 
-echo "Waiting for the SOCKS endpoint..."
+echo "Waiting for the SOCKS listener..."
+
+for _ in $(seq 1 30); do
+  if ss -H -ltn "sport = :$SOCKS_PORT" 2>/dev/null | grep -q .; then
+    break
+  fi
+  sleep 1
+done
+
+if ! ss -H -ltn "sport = :$SOCKS_PORT" 2>/dev/null | grep -q .; then
+  echo "SOCKS listener did not start." >&2
+  systemctl --no-pager --full status vps-psiphon.service >&2 || true
+  exit 1
+fi
+
+echo "SOCKS listener is up; waiting for the Psiphon tunnel..."
+
 exit_ip=
-for _ in $(seq 1 12); do
-  if exit_ip=$(curl -fsS --socks5-hostname "127.0.0.1:$SOCKS_PORT" --max-time 20 https://api.ipify.org); then break; fi
+for _ in $(seq 1 24); do
+  exit_ip=$(
+    curl -fsS \
+      --socks5-hostname "127.0.0.1:$SOCKS_PORT" \
+      --connect-timeout 5 \
+      --max-time 15 \
+      https://api.ipify.org \
+      2>/dev/null || true
+  )
+
+  if [ -n "$exit_ip" ]; then
+    break
+  fi
+
   sleep 5
 done
 if [ -z "$exit_ip" ]; then
