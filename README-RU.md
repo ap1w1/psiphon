@@ -5,8 +5,8 @@ Psiphon как локальный TCP-only SOCKS-прокси для Xray/Remnaw
 ## Установка
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Chara-Freedom/vps-psiphon/main/psiphon_install.sh)
-bash <(curl -fsSL https://raw.githubusercontent.com/Chara-Freedom/vps-psiphon/main/psiphon_install.sh) --region DE
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/psiphon/main/psiphon_install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/psiphon/main/psiphon_install.sh) --region DE
 ```
 
 Кастомные настройки можно передать сразу: `--socks-port 1180 --http-port 8180`,
