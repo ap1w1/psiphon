@@ -5,14 +5,14 @@ Run Psiphon as a local, TCP-only SOCKS proxy for Xray/Remnawave on Debian or Ubu
 ## Installation
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Chara-Freedom/vps-psiphon/main/psiphon_install.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/vps-psiphon/main/psiphon_install.sh)
 ```
 
 Choose a region or custom ports in the same command:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/Chara-Freedom/vps-psiphon/main/psiphon_install.sh) --region DE
-bash <(curl -fsSL https://raw.githubusercontent.com/Chara-Freedom/vps-psiphon/main/psiphon_install.sh) --socks-port 1180 --http-port 8180
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/vps-psiphon/main/psiphon_install.sh) --region DE
+bash <(curl -fsSL https://raw.githubusercontent.com/ap1w1/vps-psiphon/main/psiphon_install.sh) --socks-port 1180 --http-port 8180
 ```
 
 Other custom settings are `--device-region CC`, `--egress-region CC`, `--image IMAGE`, and
