@@ -150,6 +150,9 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 
+# Remove CLI path left by older versions.
+rm -f /usr/local/sbin/vps-psiphon
+
 cat >"$CLI" <<'EOF'
 #!/usr/bin/env bash
 set -u
